@@ -41,6 +41,7 @@ return (
 
         <TodoEditButton
           isEditing={isEditing}
+          disabled={todo.done}   // ✅ ICI
           onEdit={() => setIsEditing(true)}
           onSave={save}
         />

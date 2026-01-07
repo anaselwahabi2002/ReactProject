@@ -1,4 +1,15 @@
-export default function TodoEditButton({ isEditing, onEdit, onSave }) {
+export default function TodoEditButton({ isEditing, onEdit, onSave, disabled }) {
+  if (disabled) {
+    return (
+      <button
+        disabled
+        className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-200 text-slate-400 cursor-not-allowed"
+      >
+        Edit
+      </button>
+    );
+  }
+
   if (!isEditing) {
     return (
       <button
