@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 import LoginHeader from "./LoginHeader";
 import LoginError from "./LoginError";
@@ -11,23 +13,25 @@ export default function LoginForm() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const navigate = useNavigate();
+
   const submit = (e) => {
-  e.preventDefault();
-  setError("");
-  setLoading(true);
+    e.preventDefault();
+    setError("");
+    setLoading(true);
 
-  try {
-    if (email !== "issam@email.com" || password !== "issam") {
-      throw new Error("Invalid credentials");
+    try {
+      if (email !== "issam@email.com" || password !== "issam") {
+        throw new Error("Invalid credentials");
+      }
+
+      navigate("/todo");
+    } catch {
+      setError("Invalid email or password");
+    } finally {
+      setLoading(false);
     }
-
-    location.href = "/success";
-  } catch {
-    setError("Invalid email or password");
-  } finally {
-    setLoading(false);
-  }
-};
+  };
 
 
   return (
