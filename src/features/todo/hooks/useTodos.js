@@ -1,10 +1,9 @@
-// ✅ src/features/todo/hooks/useTodos.js
 import { useEffect, useState } from "react";
 import { loadTodos, saveTodos } from "../utils/storage";
 
 export function useTodos() {
   const [todos, setTodos] = useState(() => loadTodos());
-  const [filter, setFilter] = useState("all"); // all | done | active
+  const [filter, setFilter] = useState("all"); 
 
   useEffect(() => saveTodos(todos), [todos]);
 
@@ -13,12 +12,10 @@ export function useTodos() {
     setTodos((p) => [...p, { id: Date.now(), text: text.trim(), done: false }]);
   };
 
-  // ✅ STATUS button (Completed / Undo)
   const setCompleted = (id, done) => {
     setTodos((p) => p.map((t) => (t.id === id ? { ...t, done } : t)));
   };
 
-  // (optionnel) garder toggle si tu veux aussi cliquer sur le texte
   const toggleTodo = (id) => {
     setTodos((p) =>
       p.map((t) => (t.id === id ? { ...t, done: !t.done } : t))
@@ -43,7 +40,7 @@ export function useTodos() {
     todos: todosFiltered,
     addTodo,
     toggleTodo,
-    setCompleted, // ✅ NEW
+    setCompleted, 
     editTodo,
     deleteTodo,
     filter,

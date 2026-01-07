@@ -1,14 +1,13 @@
-// ✅ src/features/todo/components/TodoApp.jsx
 import { useTodos } from "../hooks/useTodos";
 import TodoForm from "./TodoForm";
-import TodoFilters from "./TodoFilters";
+import TodoFilters from "./filter/TodoFilters";
 import TodoList from "./TodoList";
 
 export default function TodoApp() {
   const {
     todos,
     addTodo,
-    setCompleted, // ✅ NEW
+    setCompleted, 
     editTodo,
     deleteTodo,
     filter,

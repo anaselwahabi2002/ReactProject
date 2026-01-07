@@ -1,4 +1,3 @@
-// src/features/todo/components/TodoForm.jsx
 import { useState } from "react";
 
 export default function TodoForm({ onAdd }) {
